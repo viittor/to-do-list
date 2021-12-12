@@ -15,13 +15,12 @@ function createId(){
 function addTask(){
 var inputTask = document.getElementById("input-item").value;
 
-var task = [{
+var task = {
    id: createId(),
    data:{
    description: inputTask
    }
 }
-]
 tasks.push(task)
 
 updateScreen();
@@ -31,8 +30,8 @@ function updateScreen(){
    var list =  "<ul>";
 
    tasks.forEach(task => {
-      list += "li id-data="+ task.id + ">"+ task.data.description + "</li>"
-   })
+      list += "<li id-data="+ task.id + ">"+ task.data.description + "</li>"
+   });
 
    list += "</ul>";
 
@@ -40,5 +39,6 @@ function updateScreen(){
    document.getElementById("container-list").innerHTML = list;
 
    document.getElementById("input-item").value = "";
+   
 
 }
