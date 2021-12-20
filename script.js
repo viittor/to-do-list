@@ -1,44 +1,67 @@
-var tasks = [];
+var tasks = []; // cria um array
 
-function createId(){
-   var time = new Date;
-
-   var id = 
-   time.getSeconds().toString() +
-   time.getMinutes().toString() +
-   time.getHours().toString() +
-   time.getDay().toString()
-
-   return id;
+// função para criar id
+function createId() {
+  var time = new Date();
+  // variavel para criar id
+  var id =
+    time.getMilliseconds().toString() +
+    time.getSeconds().toString() +
+    time.getMinutes().toString() +
+    time.getHours().toString()
+  return id;
 }
 
-function addTask(){
-var inputTask = document.getElementById("input-item").value;
+//função para criar a tarefa
+function addTask() {
+  var inputTask = document.getElementById("input-item").value;
 
-var task = {
-   id: createId(),
-   data:{
-   description: inputTask
-   }
+  if (inputTask == "") {
+    alert("Insira uma tarefa!");
+  } else {
+    //cria um objeto com 2 propriedades
+    var task = {
+      id: createId(),
+      data: {
+        description: inputTask,
+      },
+    };
+    tasks.push(task); // empurra o valor da task para o array tasks
+
+    updateScreen(); //chama a função qye atualiza a tela.
+  }
 }
-tasks.push(task)
 
-updateScreen();
+//função para atualizar a tela
+function updateScreen() {
+  var list = "<ul>";
+
+  //Para cada task em tasks execute(=>):
+  tasks.forEach((task) => {
+    list +=
+      "<li id-data=" +
+      task.id +
+      "><input type=checkbox></input>" +
+      task.data.description +
+      "</li>";
+
+    list +=
+      "<button onclick=removeTask(this) id-data=" + task.id + ">X</button>";
+  });
+
+  list += "</ul>";
+
+  //Empurra o elemento criado para a tela.
+  document.getElementById("container-list").innerHTML = list;
+
+  //Limpa o campo de input
+  document.getElementById("input-item").value = "";
 }
 
-function updateScreen(){
-   var list =  "<ul>";
+//função para remover item da tela
+function removeTask(element) {
+  // tasks recebem um filtro em que task retira o elemento que contem o id que está no id-data
+  tasks = tasks.filter((task) => task.id != element.getAttribute("id-data"));
 
-   tasks.forEach(task => {
-      list += "<li id-data="+ task.id + ">"+ task.data.description + "</li>"
-   });
-
-   list += "</ul>";
-
-
-   document.getElementById("container-list").innerHTML = list;
-
-   document.getElementById("input-item").value = "";
-   
-
+  updateScreen();
 }
