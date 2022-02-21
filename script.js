@@ -43,10 +43,11 @@ function updateScreen() {
       task.id +
       "><input type=checkbox></input>" +
       task.data.description +
+      "<button onclick=removeTask(this) id-data=" + task.id + ">X</button>";
       "</li>";
 
-    list +=
-      "<button onclick=removeTask(this) id-data=" + task.id + ">X</button>";
+    // list +=
+    //   "<button onclick=removeTask(this) id-data=" + task.id + ">X</button>";
   });
 
   list += "</ul>";
