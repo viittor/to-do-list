@@ -1,4 +1,8 @@
-var tasks = []; // cria um array
+let myStorage = window.localStorage;
+
+let tasks = []; // cria um array
+
+loadTasks();
 
 // função para criar id
 function createId() {
@@ -27,6 +31,8 @@ function addTask() {
       },
     };
     tasks.push(task); // empurra o valor da task para o array tasks
+    
+    myStorage.setItem("tasks", JSON.stringify(tasks));
 
     updateScreen(); //chama a função qye atualiza a tela.
   }
@@ -41,9 +47,9 @@ function updateScreen() {
     list +=
       "<li id-data=" +
       task.id +
-      "><input type=checkbox></input>" +
+      "><input type=checkbox></input><div>" +
       task.data.description +
-      "<button onclick=removeTask(this) id-data=" + task.id + ">X</button>";
+      "</div><button onclick=removeTask(this) id-data=" + task.id + ">X</button>";
       "</li>";
 
     // list +=
@@ -63,6 +69,20 @@ function updateScreen() {
 function removeTask(element) {
   // tasks recebem um filtro em que task retira o elemento que contem o id que está no id-data
   tasks = tasks.filter((task) => task.id != element.getAttribute("id-data"));
+
+  myStorage.setItem("tasks", JSON.stringify(tasks));
+
+  loadTasks();
+  
+}
+
+
+function loadTasks(){
+  let tasks_str = myStorage.getItem("tasks")
+
+  if(tasks_str){
+    tasks = JSON.parse(tasks_str);
+  }
 
   updateScreen();
 }

@@ -1,0 +1,114 @@
+body {
+  background: rgb(41, 41, 41);
+}
+
+.container {
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 300px;
+}
+
+.container-h1 {
+  width: 100%;
+  text-align: center;
+  font-family: "Paytone One", sans-serif;
+  /* height: auto; */
+}
+
+.container-h1 h1 {
+  color: rgb(0, 255, 21);
+  /* -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: rgb(255, 0, 212); */
+  font-size: 3em;
+}
+
+.container-input {
+  margin: 0%;
+  padding: 2px 2px 20px 2px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#input-item {
+  width: 75%;
+  height: 30px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.button-add {
+  width: 20%;
+  height: 34px;
+  border-radius: 7px;
+  border: none;
+  color: white;
+  font-family: "Paytone One", sans-serif;
+  background-color: rgb(64, 167, 64);
+}
+
+#container-list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  overflow-y: scroll;
+  height: 62vh;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/*Chrome, Safari and Opera */
+#container-list::-webkit-scrollbar {
+  display: none;
+}
+
+#container-list li {
+  list-style-type: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 1em;
+  font-family: "Josefin Sans", sans-serif;
+  color: rgb(0, 0, 0);
+  background-color: #2eff30;
+}
+
+#container-list li input[type="checkbox"]:checked ~ div {
+  text-decoration: line-through;
+}
+#container-list li div {
+  width: 80%;
+  word-wrap: break-word;
+}
+#container-list li button {
+  border-radius: 5px;
+  background-color: #0000009f;
+  color: white;
+  border: none;
+}
+
+#rodape{
+  margin-top: 30px;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  align-self: flex-end;
+}
+
+#rodape a{
+  text-decoration: none;
+
+  color: greenyellow;
+}
